@@ -22,7 +22,6 @@ class BookListView(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
 
 
 class BookDetailView(generic.DetailView, generic.FormView):
-    self.request.user.
     model = Book
     form_class = CommentForm
     template_name = 'Books/DetailView.html'
@@ -42,7 +41,6 @@ class BookDetailView(generic.DetailView, generic.FormView):
             comment.save()
             return redirect(book.get_absolute_url())
         return redirect(book.get_absolute_url())
-
 
 # @login_required
 # def BookDetailView(request, pk):

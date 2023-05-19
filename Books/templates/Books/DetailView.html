@@ -7,7 +7,8 @@
 <body>
 {{ book.title }}
 {{ book.text }}
-
+{{ book.count_get }}
+{{ book.price }}
 <form action="" method="post">
     {% csrf_token %}
     {{ comment_form }}
@@ -15,9 +16,16 @@
 </form>
 <br>
 <br>
+{% if comment_form.errors %}
+    {% for error in comment_form.errors %}
+        {{ error }}
+    {% endfor %}
+{% endif %}
+
 {% for comment in book.comments.all %}
     <p>{{ comment.user }}</p>
     <p>{{ comment.text }}</p>
 {% endfor %}
+
 </body>
 </html>

@@ -10,10 +10,10 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomCreateForms
     form = CustomChangeForms
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('phone', 'age',)}),
+        (None, {'fields': ('phone', 'age', 'img', )}),
     )
 
     add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('phone', 'age',)}),
+        (None, {'fields': ('phone', 'age', 'img',)}),
     )
 

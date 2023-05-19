@@ -1,6 +1,11 @@
 {% extends '_base.html' %}
-
+extends
 {% block title_page %}
     Home Page
+{% endblock %}
+
+{% block container %}
+    <p>view count : {{ view_count }}</p>
+    <p>ip : {{ user_ip }}</p>
 {% endblock %}
 

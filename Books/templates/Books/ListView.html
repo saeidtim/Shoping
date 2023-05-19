@@ -12,6 +12,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ book.title }}</h5>
                 <p class="card-text">{{ book.text }}</p>
+                <p>price book : {{ book.price }}$</p>
                 <a class="btn btn-info" href="{{ book.get_absolute_url }}">more</a>
                 <a class="btn btn-warning" href="{% url 'update_view' book.id %}">Edit</a>
             </div>

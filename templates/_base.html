@@ -16,19 +16,6 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user" aria-expanded="false">
-                    <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                    <div class="d-sm-none d-lg-inline-block">Hi, Michelle Green</div></a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-title">{{ user.last_login }}</div>
-                        <a href="features-profile.html" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
-                        <a href="features-activities.html" class="dropdown-item has-icon"><i class="fas fa-bolt"></i> Activities</a>
-                        <a href="features-settings.html" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </div>
-                </li>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +24,31 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+
+                <li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"
+                       aria-expanded="false">
+                        <img alt="image" src="{{ user.img.url }}" class="rounded-circle mr-1" width="30px">
+                        <div class="d-sm-none d-lg-inline-block">{{ user.username }}</div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        <a href="{% url 'password_change' %}" class="dropdown-item has-icon"><i class="far fa-user"></i>
+                            change password</a>
+                        <a href="features-activities.html" class="dropdown-item has-icon"><i class="fas fa-bolt"></i>
+                            Activities</a>
+                        <a href="features-settings.html" class="dropdown-item has-icon"><i class="fas fa-cog"></i>
+                            Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger"><i
+                                class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+
+                </li>
+            {% endif %}
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -65,17 +77,118 @@
 
         </form>
         {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}"><button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit">logout</button></a>
+            <a href="{% url 'logout' %}">
+                <button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit">logout</button>
+            </a>
         {% else %}
-            <a href="{% url 'login' %}"><button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit">login</button></a>
+            <a href="{% url 'login' %}">
+                <button class="btn btn-outline-success my-2 my-sm-0 ml-2" type="submit">login</button>
+            </a>
         {% endif %}
     </div>
 </nav>
 {% block container %}
 
 {% endblock %}
+
+<!--footer starts from here-->
+<footer class="footer">
+    <div class="container bottom_border">
+        <div class="row">
+            <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+                <!--headin5_amrc-->
+                <p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                    has been the industry's standard dummy text ever since the 1500s</p>
+                <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+                <p><i class="fa fa-phone"></i> +91-9999878398 </p>
+                <p><i class="fa fa fa-envelope"></i> info@example.com </p>
+
+
+            </div>
+
+
+            <div class=" col-sm-4 col-md  col-6 col">
+                <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                <!--headin5_amrc-->
+                <ul class="footer_ul_amrc">
+                    <li><a href="http://webenlance.com">Image Rectoucing</a></li>
+                    <li><a href="http://webenlance.com">Clipping Path</a></li>
+                    <li><a href="http://webenlance.com">Hollow Man Montage</a></li>
+                    <li><a href="http://webenlance.com">Ebay & Amazon</a></li>
+                    <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+                    <li><a href="http://webenlance.com">Image Cropping</a></li>
+                </ul>
+                <!--footer_ul_amrc ends here-->
+            </div>
+
+
+            <div class=" col-sm-4 col-md  col-6 col">
+                <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                <!--headin5_amrc-->
+                <ul class="footer_ul_amrc">
+                    <li><a href="http://webenlance.com">Remove Background</a></li>
+                    <li><a href="http://webenlance.com">Shadows & Mirror Reflection</a></li>
+                    <li><a href="http://webenlance.com">Logo Design</a></li>
+                    <li><a href="http://webenlance.com">Vectorization</a></li>
+                    <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+                    <li><a href="http://webenlance.com">Image Cropping</a></li>
+                </ul>
+                <!--footer_ul_amrc ends here-->
+            </div>
+
+
+            <div class=" col-sm-4 col-md  col-12 col">
+                <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+                <!--headin5_amrc ends here-->
+
+                <ul class="footer_ul2_amrc">
+                    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+                        </p></li>
+                    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+                        </p></li>
+                    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                        <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+                        </p></li>
+                </ul>
+                <!--footer_ul2_amrc ends here-->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <ul class="foote_bottom_ul_amrc">
+            <li><a href="http://webenlance.com">Home</a></li>
+            <li><a href="http://webenlance.com">About</a></li>
+            <li><a href="http://webenlance.com">Services</a></li>
+            <li><a href="http://webenlance.com">Pricing</a></li>
+            <li><a href="http://webenlance.com">Blog</a></li>
+            <li><a href="http://webenlance.com">Contact</a></li>
+        </ul>
+        <!--foote_bottom_ul_amrc ends here-->
+        <p class="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
+
+        <ul class="social_footer_ul">
+            <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <!--social_footer_ul ends here-->
+    </div>
+
+</footer>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </html>

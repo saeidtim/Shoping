@@ -3,7 +3,7 @@ from .models import Book, Comment
 
 @admin.register(Book)
 class AdminBook(admin.ModelAdmin):
-    list_display = ('user', 'title', 'datetime_created', )
+    list_display = ('user', 'title', 'datetime_created', 'count_get', 'price', )
     list_filter = ('datetime_created', )
 
 
